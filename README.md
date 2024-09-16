@@ -75,3 +75,74 @@ public class MesinTiket {
     }
 }
 `````
+
+1. Deklarasi Kelas dan Atribut:
+`````
+public class MesinTiket {
+    private double harga;
+    private double saldo;
+    private double total;
+}
+`````
+MesinTiket: Kelas yang digunakan untuk merepresentasikan sebuah mesin tiket.
+Atribut harga menyimpan harga tiket, saldo menyimpan saldo yang dimiliki pengguna, dan total menyimpan jumlah total pembayaran tiket yang telah dilakukan.
+
+2. Konstruktor:
+`````
+public MesinTiket(double harga, double saldo) {
+    this.harga = harga;
+    this.saldo = saldo;
+    this.total = 0.0;
+}
+`````
+Konstruktor ini digunakan untuk menginisialisasi harga tiket dan saldo pengguna ketika objek MesinTiket dibuat. Atribut total diinisialisasi dengan nilai 0 karena belum ada pembayaran yang dilakukan.
+
+3. Getter getHarga(), getSaldo(), getTotal():
+Metode ini hanya mengembalikan nilai dari atribut yang sesuai:
+`````
+public double getHarga() { return harga; }
+public double getSaldo() { return saldo; }
+public double getTotal() { return total; }
+`````
+getHarga(): Mengembalikan harga tiket.
+getSaldo(): Mengembalikan saldo pengguna.
+getTotal(): Mengembalikan total pembayaran yang telah dilakukan.
+
+4. Metode bayarTiket():
+`````
+public void bayarTiket() {
+    if (saldo >= harga) {
+        saldo -= harga;
+        total += harga;
+        System.out.println("Pembayaran berhasil. Saldo tersisa: " + saldo);
+    } else {
+        System.out.println("Saldo tidak mencukupi, perlu saldo sebanyak: " + (harga - saldo));
+    }
+}
+`````
+Metode ini digunakan untuk melakukan pembayaran tiket.
+Jika saldo cukup untuk membayar tiket (saldo >= harga), maka saldo akan dikurangi dengan harga tiket, dan total pembayaran ditambah dengan harga tiket. Informasi tentang sisa saldo ditampilkan.
+Jika saldo tidak cukup, akan ditampilkan pesan berapa saldo yang kurang.
+
+5. Metode tambahSaldo(double jumlah):
+`````
+public void tambahSaldo(double jumlah) {
+    saldo += jumlah;
+    System.out.println("Saldo berhasil ditambahkan. Saldo saat ini: " + saldo);
+}
+`````
+Metode ini digunakan untuk menambah saldo pengguna. Setelah saldo ditambahkan, akan dicetak pesan yang menunjukkan saldo terbaru.
+
+6. Metode main(String[] args):
+`````
+public static void main(String[] args) {
+    MesinTiket mesin = new MesinTiket(50, 100);
+    ...
+}
+`````
+Metode main() adalah titik masuk dari program. Dalam metode ini, sebuah objek MesinTiket dibuat dengan harga tiket 50 dan saldo awal 100.
+Kode ini juga melakukan serangkaian operasi:
+Menampilkan informasi harga tiket, saldo awal, dan total pembayaran.
+Melakukan pembayaran pertama kali.
+Menambahkan saldo dan mencoba membayar tiket lagi.
+Pada akhirnya, menampilkan saldo akhir dan total yang telah dibayar.
